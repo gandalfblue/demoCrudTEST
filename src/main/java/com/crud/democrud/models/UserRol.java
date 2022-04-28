@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
 @Entity
 @Table(name = "userRol")
 public class UserRol implements Serializable {
@@ -22,6 +21,10 @@ public class UserRol implements Serializable {
     private String rol;
 
     public UserRol() {
+    }
+
+    public UserRol(String rol) {
+        this.rol = rol;
     }
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = UsuarioModel.class, optional = false)

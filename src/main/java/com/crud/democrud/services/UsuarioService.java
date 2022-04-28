@@ -1,5 +1,6 @@
 package com.crud.democrud.services;
 
+import com.crud.democrud.models.UserRol;
 import com.crud.democrud.models.UsuarioModel;
 import com.crud.democrud.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,8 @@ public class UsuarioService {
         }
     }
 
-
-    
+    public UsuarioModel updateUsuario(Long id, UsuarioModel usuario) {
+        usuario.setId(id);
+        return usuarioRepository.save(usuario);
+    }
 }
