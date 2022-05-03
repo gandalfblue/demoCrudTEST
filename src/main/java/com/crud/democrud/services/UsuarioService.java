@@ -9,37 +9,54 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/*
+    Clase que representa los servicios crud para la entidad userRol
+ */
 @Service
 public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
-    
-    public ArrayList<UsuarioModel> obtenerUsuarios(){
+
+    /*
+        Metodo que sirve para obtener todos los usuarios que estan almacenados en la base de datos
+     */
+    public ArrayList<UsuarioModel> obtenerUsuarios() {
         return (ArrayList<UsuarioModel>) usuarioRepository.findAll();
     }
 
-    public UsuarioModel guardarUsuario(UsuarioModel usuario){
+    /*
+        Metodo que sirve para guardar un usuario en la base de datos
+     */
+    public UsuarioModel guardarUsuario(UsuarioModel usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    public Optional<UsuarioModel> obtenerPorId(Long id){
+    public Optional<UsuarioModel> obtenerPorId(Long id) {
         return usuarioRepository.findById(id);
     }
 
-
-    public ArrayList<UsuarioModel>  obtenerPorPrioridad(Integer prioridad) {
+    /*
+       Metodo que me permite obtener un solo usuario por medio del id en la base de datos
+    */
+    public ArrayList<UsuarioModel> obtenerPorPrioridad(Integer prioridad) {
         return usuarioRepository.findByPrioridad(prioridad);
     }
 
+    /*
+        Metodo que me permite eliminar un solo usuario por medio del id en la base de datos.
+     */
     public boolean eliminarUsuario(Long id) {
-        try{
+        try {
             usuarioRepository.deleteById(id);
             return true;
-        }catch(Exception err){
+        } catch (Exception err) {
             return false;
         }
     }
 
+    /*
+        Metodo que me permite actualizar un solo usuario por medio del id en la base de datos.
+     */
     public UsuarioModel updateUsuario(Long id, UsuarioModel usuario) {
         usuario.setId(id);
         return usuarioRepository.save(usuario);

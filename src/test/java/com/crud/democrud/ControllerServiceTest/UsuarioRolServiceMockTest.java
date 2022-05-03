@@ -13,6 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
+/*
+    Clase que me permite realizar pruebas unitarias a la clase service de la entidad rol medinate Mockito
+ */
 @SpringBootTest
 public class UsuarioRolServiceMockTest {
 
@@ -22,6 +25,10 @@ public class UsuarioRolServiceMockTest {
         @Autowired
         UserRolService usuarioRolService;
 
+        /*
+            Metodo el cual me verifica el funcionamiento de la clase service al realizar una prueba para
+                traerme todos los roles.
+         */
         @Test
         public void testUserRol() {
             when(usuarioRolRepository.findAll()).thenReturn(new ArrayList<>());
